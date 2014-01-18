@@ -29,7 +29,7 @@ a "HEADNOTE"
 'Retrieve  all headnotes on a General Overview' (Edit Request) (Exit Headnotes Only)
 
 'View'
-Cite | Digest | KWIC | Full | Custom
+Digest | KWIC | Full | Custom
 
 Save, print (printing search results?
 History, Save, Email, Alerts, "Switch Client(?)" 
@@ -41,7 +41,7 @@ Overview
 
 "Core Terms"
 
-* Generate Citations
+X * Generate Citations
 
 * Judge Attorney Expert Arbitrator Company
 
@@ -49,7 +49,7 @@ Overview
 
 * Shepard's Citations-- if the cases have been overruled, how many times they have been cited
 
-* "Neutral Analysis-- (merely concurring or dissenting opinions)
+X * "Neutral Analysis-- (merely concurring or dissenting opinions)
 
 * "Table of Content or "TOC" Sources (wtf)
 Cases, Court Records Filings Briefings Witness Testimony Jury Verdicts Settlements

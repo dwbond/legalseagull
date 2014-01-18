@@ -21,8 +21,13 @@ Legal Seagull | Court Cases
       {% for case in cases %}
         <div class="col-lg-offset-1 col-lg-10 well">
           <h2><a href="#">{{ case.name }}</a></h2>
+	  {% if case.descisionDate %}
+	  Orange
+	  <p>{{ case.descisionDate|date }}</p>
+          {% else %}
+	  Apple
+	  {% endif %}
           <p>{{ case.description }}</p>
-	  <p>{{ case.descisionDate }}</p>
 	  {% for tag in case.tags.all %}
 	    <a href="#"><p>{{ tag }}</p></a>
 	  {% endfor %}
@@ -37,14 +42,14 @@ Legal Seagull | Court Cases
   <div class="col-lg-6">
     <div class="row">
       <div class="col-lg-12 well">
-         <img src="{% static "imgs/evernote-logo.png" %}" />
-	 Evernote
+        <img src="{% static "imgs/evernote-logo.png" %}" />
+	Evernote
       </div>
       <div class="col-lg-12 well">
-         Analysis in a well
+        Generate Citations
       </div>
       <div class="col-lg-12 well">
-         More analysis in a well
+        Cross References
       </div>
     <div>
   </div>

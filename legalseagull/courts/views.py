@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from courts.models import Base, Tags, Justice, Opinion, Case
-from datetime import datetime, timedelta
-
+import time
 
 def index(request):
     cases = Case.objects.all()# .order_by('-decisionDate')
