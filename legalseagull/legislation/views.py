@@ -11,7 +11,6 @@ def index(request):
 
 def view_title(request, number):
     title = get_object_or_404(Title, number=number)
-
     return render(request, 'title.html', {
         'title' : title,
     },
