@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import permalink
+from django.core.urlresolvers import reverse
 # from django.template.defaultfilters import slugify
 
 class Base(models.Model):
@@ -24,7 +25,10 @@ class Tags(Base):
 
     @permalink
     def get_absolute_url(self):
-        return ('case_tag', None, {'slug':self.slug})
+        return reverse(
+            'courts.views.tags',
+            args=[str(self.slug)]
+        )
 
     class Meta:
         verbose_name_plural = "Tags"
@@ -38,7 +42,10 @@ class Justice(Base):
 
     @permalink
     def get_absolute_url(self):
-        return ('justice', None, {'slug':self.slug})
+        return reverse(
+            'courts.views.justice',
+            args=[str(self.slug)]
+        )
 
 class Opinion(Base):
     """
@@ -51,7 +58,10 @@ class Opinion(Base):
 
     @permalink
     def get_absolute_url(self):
-        return ('opinion', None, {'slug':self.slug})
+        return reverse(
+            'courts.views.opinion',
+            args=[str(self.slug)]
+        )
 
 class Case(Base):
     """
@@ -64,4 +74,7 @@ class Case(Base):
 
     @permalink
     def get_absolute_url(self):
-        return '%s' % self.title
+        return reverse(
+            'courts.views.case',
+            args=[str(self.slug)]
+        )
