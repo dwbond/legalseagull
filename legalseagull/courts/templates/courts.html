@@ -16,7 +16,7 @@ Legal Seagull | Court Cases
 </div>
 
 <div class="row">
-  <div class= "col-lg-6">
+  <div class= "col-lg-7">
     <div class="row">
       {% for case in cases %}
         <div class="col-lg-offset-1 col-lg-10 well">
@@ -39,17 +39,31 @@ Legal Seagull | Court Cases
     </div>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-5">
     <div class="row">
       <div class="col-lg-12 well">
         <img src="{% static "imgs/evernote-logo.png" %}" />
-	Evernote
+	<strong>Evernote</strong>
       </div>
       <div class="col-lg-12 well">
-        Generate Citations
+        <strong>Generate Citations</strong>
+	<p>{% now "jS F Y H:i" %}</p>
       </div>
       <div class="col-lg-12 well">
-        Cross References
+        <strong>Cross References</strong>
+	<div class="row">
+	  <div class="col-lg-6">
+	    Legislation
+	    <!-- click to expand -->
+	  </div>
+          <div class="col-lg-6">
+            Judiciary
+	    <!-- click to expand -->
+	  </div>
+	</div>
+      </div>
+      <div class="col-lg-12 well">
+        <strong>Common Tags</strong>
       </div>
     <div>
   </div>
