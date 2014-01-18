@@ -74,6 +74,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'legalseagull.urls'
 
 WSGI_APPLICATION = 'legalseagull.wsgi.application'
@@ -149,3 +153,12 @@ HAYSTACK_CONNECTIONS = {
 # The RealtimeSignalPRocessor allows for objects to be indexed as soon as
 # they are created --- in real time.
 HAYSTACK_SIGNAL_PROCSESOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# Evernote API settings
+EVERNOTE_CONSUMER_KEY = secret.EVERNOTE_CONSUMER_KEY
+EVERNOTE_CONSUMER_SECRET = secret.EVERNOTE_CONSUMER_SECRET
+EVERNOTE_DEBUG = True
+
+# Login settings
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
