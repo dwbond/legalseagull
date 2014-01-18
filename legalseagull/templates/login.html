@@ -1,0 +1,45 @@
+{% extends 'layout/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Legal Seagull
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div id="seagull"><img src="{% static "imgs/seagull.png" %}"/></div>
+      <h1><strong>LegalSeagull</strong></h1>
+      <p class="lead">Analyze and visualize legal information.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class= "col-lg-12">
+    <div class="well">
+      <form class="form-horizontal" method="post"
+      action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <h1>
+          Login 
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
+          pellentesque elit, quis faucibus odio. Duis vitae metus a arcu
+          ullamcorper vehicula ut et justo. Suspendisse ullamcorper nulla a
+          arcu porta pulvinar. Etiam pharetra sem ut eros tristique, et
+          viverra leo tincidunt. Morbi vel hendrerit risus. Donec arcu nunc,
+          dictum sit amet dictum eget, convallis in neque. Quisque id massa
+          tortor. Mauris feugiat ante id orci aliquet convallis. Aliquam
+          dapibus massa ac diam tempus pretium. Aenean vulputate in quam sit
+          amet adipiscing.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from django.contrib.auth.views import login, logout
 from legalseagull.views import index
 from legalseagull.forms import StyledSearchForm
 from haystack.views import SearchView
@@ -29,6 +30,7 @@ urlpatterns = patterns('',
         name = 'haystack_search',
     ),
 
-    # Social-auth login urls.
-    url(r'', include('social_auth.urls')),
+    # Auth login urls.
+    url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
 )
