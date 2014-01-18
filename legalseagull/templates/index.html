@@ -1,4 +1,5 @@
 {% extends 'layout/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 Legal Seagull
@@ -9,23 +10,44 @@ Legal Seagull
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong>Legal Seagull</strong></h1>
+      <div id="seagull"><img src="{% static "imgs/seagull.png" %}"/></div>
+      <h1><strong>LegalSeagull</strong></h1>
       <p class="lead">Analyze and visualize legal information.</p>
     </div>
   </div>
 </div>
 
-<div class="row well">
+<div class="row">
   <div class= "col-lg-6">
-    <h2 class="text-center"><a href="#">Legislation</a></h2>
-    <div class="row">
-      Title I
+    <div class="well">
+      <h1>Legislation</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
+        pellentesque elit, quis faucibus odio. Duis vitae metus a arcu
+        ullamcorper vehicula ut et justo. Suspendisse ullamcorper nulla a
+        arcu porta pulvinar. Etiam pharetra sem ut eros tristique, et
+        viverra leo tincidunt. Morbi vel hendrerit risus. Donec arcu nunc,
+        dictum sit amet dictum eget, convallis in neque. Quisque id massa
+        tortor. Mauris feugiat ante id orci aliquet convallis. Aliquam
+        dapibus massa ac diam tempus pretium. Aenean vulputate in quam sit
+        amet adipiscing.
+      </p>
     </div>
   </div>
+
   <div class="col-lg-6">
-    <h2 class="text-center"><a href="#">Court Cases</a></h2>
-    <div class="row">
-      Brown v. Board of Education
+    <div class="well">
+      <h1>Court Cases</h1>
+      <p>
+        Sed id justo quis lacus molestie pharetra non sed ipsum. In viverra
+        velit id iaculis porta. Donec nec neque lorem. Ut suscipit enim sit
+        amet lectus convallis, id mollis ante vehicula. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Proin vitae lobortis diam,
+        sit amet gravida turpis. Donec aliquam ac nulla at facilisis. Etiam
+        neque augue, suscipit in ligula at, tempor condimentum nisi. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. In malesuada
+        mollis urna quis vehicula. Mauris luctus vel diam semper aliquam. 
+      </p>
     </div>
   </div>
 </div>
