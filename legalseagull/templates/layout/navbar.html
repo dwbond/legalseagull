@@ -11,13 +11,20 @@
     <div class="navbar-collapse collapse" id="navbar-main">
 
       <ul class="nav navbar-nav">
+        <li><a href="{% url 'legalseagull.views.about' %}">About</a></li>
+        {% if user.is_authenticated %}
         <li><a href="{% url 'courts.views.index' %}">Court Cases</a></li>
         <li><a href="{% url 'legislation.views.index' %}">Legislation</a></li>
+        {% endif %}
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'haystack_search' %}">Search</a></li>
-        <li><a href="{% url 'login' %}">Sign In/Up</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
       </ul>
 
     </div>
