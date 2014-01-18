@@ -20,7 +20,7 @@ class Title( models.Model ):
     )
 
     def __unicode__(self):
-        return "<Title %d>" % (self.number)
+        return "Title %d: %s" % (self.number, self.name)
 
     def get_absolute_url(self):
         return reverse(
@@ -51,8 +51,9 @@ class Chapter( models.Model ):
     )
 
     def __unicode__(self):
-        return "<Title %d Chapter %d>" % (self.title.number,
-                                          self.number)
+        return "Title %d.%d: %s" % (self.title.number,
+                                    self.number,
+                                    self.name)
 
     class Meta:
         ordering = ['number']
@@ -81,9 +82,10 @@ class Section( models.Model ):
     )
 
     def __unicode__(self):
-        return "<Title %d Chapter %d Section %d>" % (self.chapter.title.number,
-                                                     self.chapter.number,
-                                                     self.number)
+        return "Title %d.%d.%d: %s" % (self.chapter.title.number,
+                                       self.chapter.number,
+                                       self.number,
+                                       self.name)
 
     class Meta:
         ordering = ['number']
