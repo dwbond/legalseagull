@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-Legal Seagull | Courts | Antonin Scalia
+Legal Seagull | Courts | {{ justice.name }}
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@ Legal Seagull | Courts | Antonin Scalia
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong>Antonin Scalia</strong></h1>
+      <h1><strong>{{ justice.name }}</strong></h1>
       <p class="lead">Served 1980 - present</p>
     </div>
   </div>
