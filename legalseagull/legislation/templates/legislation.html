@@ -26,6 +26,7 @@ Legal Seagull | Legislation
       <a class="list-group-item titles" href="#analysis{{title.number}}">
         <h4 class="list-group-item-heading">
           Title {{title.number}}: {{title.name}}
+          <span class="glyphicon glyphicon-arrow-right pull-right"></span>
         </h4>
         <p class="list-group-item-text">
           {{title.long_name}}
@@ -59,9 +60,9 @@ Legal Seagull | Legislation
     <div class="list-group collapse side-panel" id="analysis{{title.number}}">
       <div class="list-group-item">
         <h4 class="list-group-item-heading">Title {{title.number}}</h4>
+        <h6>{{title.name}}</h6>
         <p class="list-group-item-text">
-          <a href="{{title.get_absolute_url}}">Investigate</a> this title
-          further.
+          <a href="{{title.get_absolute_url}}">Details</a>
         </p>
       </div>
     </div>
