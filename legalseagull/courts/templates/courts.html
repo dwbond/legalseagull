@@ -20,7 +20,7 @@ Legal Seagull | Court Cases
     <div class="row">
       {% for case in cases %}
         <div class="col-lg-offset-1 col-lg-10 well">
-          <h2><a href="#">{{ case.name }}</a></h2>
+          <h2><a href="{{ case.get_absolute_url }}">{{ case.name }}</a></h2>
 	  {% if case.descisionDate %}
 	  Orange
 	  <p>{{ case.descisionDate|date }}</p>
@@ -29,7 +29,7 @@ Legal Seagull | Court Cases
 	  {% endif %}
           <p>{{ case.description }}</p>
 	  {% for tag in case.tags.all %}
-	    <a href="#"><p>{{ tag }}</p></a>
+	    <a href="{{ tag.get_absolute_url }}"><p>{{ tag }}</p></a>
 	  {% endfor %}
         </div>
       
