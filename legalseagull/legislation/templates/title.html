@@ -34,14 +34,7 @@ Legal Seagull | Title {{ title.number }}
         {% for section in chapter.section_set.all %}
         <h5>&sect;{{section.number}}: {{section.name}}</h5>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          feugiat faucibus mi sagittis facilisis. Proin vel ipsum massa.
-          Proin non cursus nunc, vitae pharetra felis. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. In tincidunt tincidunt
-          urna eget rutrum. Vivamus tincidunt sem sed eros blandit, sit
-          amet posuere libero sollicitudin. Sed tincidunt magna eu ipsum
-          venenatis porttitor. Nunc posuere metus ac blandit porta. Morbi
-          non velit mi. 
+          {{ section.text }}
         </p>
         {% empty %}
         <h4>There were no sections found in this chapter.</h4>
