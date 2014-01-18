@@ -7,14 +7,14 @@ urlpatterns = patterns('',
     url(r'^$', index),
     
     # justice
-    url(r'^(?P<slug>\w+)/?$', justice),
+    url(r'^justice/(?P<slug>([A-Za-z0-9\-\_]+))$', justice),
 
     # tags
-    url(r'^(?P<slug>\w+)/?$', tags),
+    url(r'^tags/(?P<slug>([A-Za-z0-9\-\_]+))$', tags),
 
     # opinion
-    url(r'^(?P<slug>\w+)/?$', opinion),
+    url(r'^opinion/(?P<slug>([A-Za-z0-9\-\_]+))$', opinion),
 
     # case
-    url(r'^(?P<slug>\w+)/?$', case),
+    url(r'^case/(?P<slug>([A-Za-z0-9\-\_]+))$', case),
 )

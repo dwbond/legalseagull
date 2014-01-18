@@ -46,7 +46,7 @@ class Opinion(Base):
     """
 
     writtenBy = models.ManyToManyField(Justice, related_name="opinions")
-    opinion = models.TextField()
+    contents = models.TextField()
     case = models.ForeignKey( 'Case' )
 
     @permalink
