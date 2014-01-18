@@ -3,7 +3,9 @@ from legislation.models import Title
 
 # Create your views here.
 def index(request):
+    titles = Title.objects.all()
     return render(request, 'legislation.html', {
+        'titles': titles,
     },
     )
 
