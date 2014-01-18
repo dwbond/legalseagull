@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'legislation',
     'courts',
     'south',
+    'haystack',
 )
 
 TEMPLATE_LOADERS = (
@@ -136,3 +137,15 @@ LOGGING = {
         },
     }
 }
+
+HAYSTACK_CONNECTIONS = {
+    'default' : {
+        'ENGINE' : 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH' : os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
+
+# Haystack Signal PRocessor
+# The RealtimeSignalPRocessor allows for objects to be indexed as soon as
+# they are created --- in real time.
+HAYSTACK_SIGNAL_PROCSESOR = 'haystack.signals.RealtimeSignalProcessor'
