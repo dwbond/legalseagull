@@ -17,10 +17,19 @@ Legal Seagull | Court Cases
 <div class="row">
   <div class= "col-lg-6">
     <div class="row">
-      <div class="col-lg-offset-1 col-lg-10 well">
-	Brown v. Board of Education
-        <!-- for case in cases -->
-      </div>
+      {% for case in cases %}
+        <div class="col-lg-offset-1 col-lg-10 well">
+          <h2><a href="#">{{ case.name }}</a></h2>
+          <p>{{ case.description }}</p>
+	  <p>{{ case.descisionDate }}</p>
+	  {% for tag in case.tags.all %}
+	    <a href="#"><p>{{ tag }}</p></a>
+	  {% endfor %}
+        </div>
+      
+      {% empty %}
+      <p>Oh dear, why aren't there any cases?</p>
+      {% endfor %}
     </div>
   </div>
 
