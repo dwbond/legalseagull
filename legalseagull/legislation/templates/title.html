@@ -34,7 +34,12 @@ Legal Seagull | Title {{ title.number }}
       <div class="panel-body">
 
         {% for section in chapter.section_set.all %}
-        <h5>&sect;{{section.number}}: {{section.name}}</h5>
+        <h5>
+          &sect;{{section.number}}: {{section.name}}
+          <span class="pull-right">
+            <a href="#">Generate Citation</a>
+          </span>
+        </h5>
         <p>
           {{ section.text }}
         </p>
@@ -54,29 +59,32 @@ Legal Seagull | Title {{ title.number }}
 
   </div>
 
-  <div>
-    <div class="col-lg-4">
+  <div class="col-lg-4">
+    <div class="list-group">
 
-      <div class="col-lg-12 well">
-        <img src="{% static "imgs/evernote-logo.png" %}" />
-        <strong>Evernote</strong>
-      </div>
-
-      <div class="col-lg-12 well">>
-        <strong>Generate Citations</strong>
-        <p>{% now "jS F Y H:i" %}</p>
-      </div>
-
-      <div class="col-lg-12 well">
-        <strong>Cross References</strong>
-        <div class="row">
-          <div class="col-lg-6">
-            Legislation
-          </div>
-          <div class="col-lg-6">
-            Judiciary
-          </div>
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Evernote
+          <a href="#" class="evernote-expander">
+            <span class="glyphicon glyphicon-download pull-right"></span>
+          </a>
+        </h4>
+        <div class="list-group-item-text" id="evernote-tab">
+          <textarea placeholder="Make annotation..." rows="5"
+          class="form-control" id="evernote-textarea"></textarea>
+          <br/>
+          <input type="submit" class="btn btn-primary btn-sm"
+          value="Make Note" id="evernote-submit" />
         </div>
+      </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Cross References
+        </h4>
+        <p class="list-group-item-text">
+          stuff
+        </p>
       </div>
 
     </div>
