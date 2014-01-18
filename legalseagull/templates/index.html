@@ -20,7 +20,12 @@ Legal Seagull
 <div class="row">
   <div class= "col-lg-6">
     <div class="well">
-      <h1>Legislation</h1>
+      <h1>
+        Legislation
+        <a href="{% url 'legislation.views.index' %}">
+          <span class="glyphicon glyphicon-new-window pull-right"></span>
+        </a>
+      </h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
         pellentesque elit, quis faucibus odio. Duis vitae metus a arcu
@@ -37,7 +42,12 @@ Legal Seagull
 
   <div class="col-lg-6">
     <div class="well">
-      <h1>Court Cases</h1>
+      <h1>
+        Court Cases
+        <a href="{% url 'courts.views.index' %}">
+          <span class="glyphicon glyphicon-new-window pull-right"></span>
+        </a>
+      </h1>
       <p>
         Sed id justo quis lacus molestie pharetra non sed ipsum. In viverra
         velit id iaculis porta. Donec nec neque lorem. Ut suscipit enim sit
