@@ -4,4 +4,4 @@
 /.virtualenv
 media
 legalseagull/static/admin
-legalseagull/settings/secret.py
+legalseagull/legalseagull/secret.py
