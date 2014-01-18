@@ -47,9 +47,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'legalseagull.urls'
+ROOT_URLCONF = 'settings.urls'
 
-WSGI_APPLICATION = 'legalseagull.wsgi.application'
+WSGI_APPLICATION = 'settings.wsgi.application'
 
 
 # Database
