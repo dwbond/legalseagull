@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_auth',
     'legislation',
     'courts',
     'south',
@@ -59,6 +60,10 @@ TEMPLATE_LOADERS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
+    'social_auth.context_processors.social_auth_by_name_backends',
+    'social_auth.context_processors.social_auth_backends',
+    'social_auth.context_processors.social_auth_by_type_backends',
+    'social_auth.context_processors.social_auth_login_redirect',
 )
 
 TEMPLATE_DIRS = (
@@ -72,6 +77,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.OpenIDBackend',
+    'social_auth.backends.contrib.evernote',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'legalseagull.urls'
@@ -149,3 +160,12 @@ HAYSTACK_CONNECTIONS = {
 # The RealtimeSignalPRocessor allows for objects to be indexed as soon as
 # they are created --- in real time.
 HAYSTACK_SIGNAL_PROCSESOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# Evernote API settings
+EVERNOTE_CONSUMER_KEY = secret.EVERNOTE_CONSUMER_KEY
+EVERNOTE_CONSUMER_SECRET = secret.EVERNOTE_CONSUMER_SECRET
+EVERNOTE_DEBUG = True
+
+# Login settings
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'

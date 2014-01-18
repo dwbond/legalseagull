@@ -28,4 +28,7 @@ urlpatterns = patterns('',
         ),
         name = 'haystack_search',
     ),
+
+    # Social-auth login urls.
+    url(r'', include('social_auth.urls')),
 )
