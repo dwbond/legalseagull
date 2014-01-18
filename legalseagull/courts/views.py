@@ -15,7 +15,7 @@ def justice(request, slug):
     justice = get_object_or_404(Justice, slug=slug)
     cases = Case.objects.all()#.orderby('-decisionDate')
     return render(request, 'justice.html', {
-        'justice' = justice,
+        'justice' : justice,
 
     },
     )
