@@ -1,4 +1,6 @@
 *.swp
 *.pyc
 *.swo
-.virtualenv
+/.virtualenv
+media
+legalseagull/static/admin
