@@ -12,7 +12,6 @@ def index(request):
 
 def justice(request, slug):
     justice = get_object_or_404(Justice, slug=slug)
-    opinions = Opinion.objects.filter()#.order_by('decisionDate')
     return render(request, 'justice.html', {
     },
     )

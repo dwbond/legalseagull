@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table(u'courts_base', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=150)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=50)),
             ('description', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal(u'courts', ['Base'])
@@ -32,6 +32,8 @@ class Migration(SchemaMigration):
         # Adding model 'Opinion'
         db.create_table(u'courts_opinion', (
             (u'base_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['courts.Base'], unique=True, primary_key=True)),
+            ('opinion', self.gf('django.db.models.fields.TextField')()),
+            ('case', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['courts.Case'])),
         ))
         db.send_create_signal(u'courts', ['Opinion'])
 
@@ -47,6 +49,7 @@ class Migration(SchemaMigration):
         # Adding model 'Case'
         db.create_table(u'courts_case', (
             (u'base_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['courts.Base'], unique=True, primary_key=True)),
+            ('decisionDate', self.gf('django.db.models.fields.DateField')()),
         ))
         db.send_create_signal(u'courts', ['Case'])
 
@@ -58,15 +61,6 @@ class Migration(SchemaMigration):
             ('tags', models.ForeignKey(orm[u'courts.tags'], null=False))
         ))
         db.create_unique(m2m_table_name, ['case_id', 'tags_id'])
-
-        # Adding M2M table for field opinions on 'Case'
-        m2m_table_name = db.shorten_name(u'courts_case_opinions')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('case', models.ForeignKey(orm[u'courts.case'], null=False)),
-            ('opinion', models.ForeignKey(orm[u'courts.opinion'], null=False))
-        ))
-        db.create_unique(m2m_table_name, ['case_id', 'opinion_id'])
 
 
     def backwards(self, orm):
@@ -91,9 +85,6 @@ class Migration(SchemaMigration):
         # Removing M2M table for field tags on 'Case'
         db.delete_table(db.shorten_name(u'courts_case_tags'))
 
-        # Removing M2M table for field opinions on 'Case'
-        db.delete_table(db.shorten_name(u'courts_case_opinions'))
-
 
     models = {
         u'courts.base': {
@@ -101,12 +92,12 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.TextField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '150'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
+            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'})
         },
         u'courts.case': {
             'Meta': {'object_name': 'Case', '_ormbases': [u'courts.Base']},
             u'base_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['courts.Base']", 'unique': 'True', 'primary_key': 'True'}),
-            'opinions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['courts.Opinion']", 'symmetrical': 'False'}),
+            'decisionDate': ('django.db.models.fields.DateField', [], {}),
             'tags': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['courts.Tags']", 'symmetrical': 'False'})
         },
         u'courts.justice': {
@@ -116,7 +107,9 @@ class Migration(SchemaMigration):
         u'courts.opinion': {
             'Meta': {'object_name': 'Opinion', '_ormbases': [u'courts.Base']},
             u'base_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['courts.Base']", 'unique': 'True', 'primary_key': 'True'}),
-            'writtenBy': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['courts.Justice']", 'symmetrical': 'False'})
+            'case': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['courts.Case']"}),
+            'opinion': ('django.db.models.fields.TextField', [], {}),
+            'writtenBy': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'opinions'", 'symmetrical': 'False', 'to': u"orm['courts.Justice']"})
         },
         u'courts.tags': {
             'Meta': {'object_name': 'Tags', '_ormbases': [u'courts.Base']},
