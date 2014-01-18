@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'courts',
     'south',
     'haystack',
+    'django_gravatar',
 )
 
 TEMPLATE_LOADERS = (
