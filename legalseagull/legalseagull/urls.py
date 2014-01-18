@@ -4,6 +4,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 from legalseagull.views import index
+from legalseagull.forms import StyledSearchForm
+from haystack.views import SearchView
 
 
 urlpatterns = patterns('',
@@ -16,4 +18,14 @@ urlpatterns = patterns('',
 
     # Admin interface.
     url(r'^admin/', include(admin.site.urls)),
+
+    # Search urls.
+    url(
+        r'^search/?',
+        SearchView(
+            form_class = StyledSearchForm,
+            results_per_page = 20,
+        ),
+        name = 'haystack_search',
+    ),
 )
