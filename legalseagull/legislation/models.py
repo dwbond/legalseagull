@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Title( models.Model ):
@@ -20,6 +21,12 @@ class Title( models.Model ):
 
     def __unicode__(self):
         return "<Title %d>" % (self.number)
+
+    def get_absolute_url(self):
+        return reverse(
+            'legislation.views.view_title',
+            args=[str(self.number)]
+        )
 
     class Meta:
         ordering = ['number']
