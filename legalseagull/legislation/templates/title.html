@@ -25,7 +25,7 @@ Legal Seagull | Title {{ title.number }}
   <div class="col-lg-8">
 
     {% for chapter in title.chapter_set.all %}
-    <div class="panel panel-info">
+    <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
           Ch {{chapter.number}}: {{chapter.name}}
@@ -54,29 +54,31 @@ Legal Seagull | Title {{ title.number }}
 
   </div>
 
-  <div class="col-lg-4">
-    <div class="row">
+  <div>
+    <div class="col-lg-4">
+
       <div class="col-lg-12 well">
         <img src="{% static "imgs/evernote-logo.png" %}" />
-	<strong>Evernote</strong>
+        <strong>Evernote</strong>
       </div>
+
       <div class="col-lg-12 well">>
         <strong>Generate Citations</strong>
-	<p>{% now "jS F Y H:i" %}</p>
+        <p>{% now "jS F Y H:i" %}</p>
       </div>
+
       <div class="col-lg-12 well">
         <strong>Cross References</strong>
-	<div class="row">
-	  <div class="col-lg-6">
-	    Legislation
-	    <!-- click to expand further -->
-	  </div>
-	  <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-6">
+            Legislation
+          </div>
+          <div class="col-lg-6">
             Judiciary
-	    <!-- click to expand further -->
-	  </div>
-	</div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 

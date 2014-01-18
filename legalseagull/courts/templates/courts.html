@@ -7,6 +7,7 @@ Legal Seagull | Court Cases
 
 {% block content %}
 
+
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
@@ -16,57 +17,75 @@ Legal Seagull | Court Cases
 </div>
 
 <div class="row">
-  <div class= "col-lg-8">
-    <div class="row">
+
+  <div class="col-lg-8">
+    <div class="list-group">
+
       {% for case in cases %}
-        <div class="col-lg-offset-1 col-lg-10 well">
-          <h2><a href="{{ case.get_absolute_url }}">{{ case.name }}</a></h2>
-	  {% if case.descisionDate %}
-	  Orange
-	  <p>{{ case.descisionDate|date }}</p>
-          {% else %}
-	  Apple
-	  {% endif %}
-          <p>{{ case.description }}</p>
-	  {% for tag in case.tags.all %}
-	    <a href="{{ tag.get_absolute_url }}"><p>{{ tag }}</p></a>
-	  {% endfor %}
-        </div>
-      
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          {{ case.name }}
+          <a href="{{ case.get_absolute_url }}">
+          </a>
+        </h4>
+        <p class="list-group-item-text">
+          {{ case.description }}
+          <br/>
+          {% for tag in case.tags.all %}
+          <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+          {% endfor %}
+          <span class="pull-right">
+            <a href="#">Generate Citation</a>
+          </span>
+        </p>
+      </div>
+
       {% empty %}
-      <p>Oh dear, why aren't there any cases?</p>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          No cases found.
+        </h4>
+      </div>
+
       {% endfor %}
+
     </div>
   </div>
 
+
   <div class="col-lg-4">
-    <div class="row">
-      <div class="col-lg-12 well">
-        <img src="{% static "imgs/evernote-logo.png" %}" />
-	<strong>Evernote</strong>
+    <div class="list-group">
+
+      <div class="list-group-item">
+        <p class="list-group-item-text">
+          <img src="{% static "imgs/evernote-logo.png" %}" />
+          <strong>Evernote</strong>
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        <strong>Generate Citations</strong>
-	<p>{% now "jS F Y H:i" %}</p>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          cross references
+        </h4>
+        <p class="list-group-item-text">
+          stuff goes here.
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        <strong>Cross References</strong>
-	<div class="row">
-	  <div class="col-lg-6">
-	    Legislation
-	    <!-- click to expand -->
-	  </div>
-          <div class="col-lg-6">
-            Judiciary
-	    <!-- click to expand -->
-	  </div>
-	</div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Common Tags
+        </h4>
+        <p class="list-group-item-text">
+          tag1 tag2
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        <strong>Common Tags</strong>
-      </div>
-    <div>
+
+    </div>
   </div>
+
 </div>
 
 {% endblock %}
