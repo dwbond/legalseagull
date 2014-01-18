@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from courts.models import Base, Tags, Justice, Opinion, Case
+from datetime import datetime, timedelta
 
-# Create your views here.
 def index(request):
+    cases = Case.objects.all()# .order_by('-decisionDate')
     return render(request, 'courts.html', {
+    'cases' : cases,
     },
     )
 

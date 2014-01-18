@@ -1,16 +1,21 @@
 from django.db import models
 from django.db.models import permalink
+# from django.template.defaultfilters import slugify
 
 class Base(models.Model):
     """
     Useful default fields
     """
     name = models.CharField(max_length = 150)
-    slug = models.SlugField(max_length = 50)
+    slug = models.SlugField(max_length = 50, unique=True)
     description = models.TextField()
 
     def __unicode__(self):
-        return '%s' % self.title
+        return '%s' % self.name
+
+    # def save(self):
+        # self.slug = slugify(self.name)
+        # super(Base, self).save()
 
 class Tags(Base):
     """
@@ -51,7 +56,7 @@ class Case(Base):
     The Case
     """
 
-    # decisionDate = models.DateField()
+    decisionDate = models.DateField()
     # citationRank = models.IntegerField()
     tags = models.ManyToManyField(Tags)
     opinions = models.ManyToManyField(Opinion)
