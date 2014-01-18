@@ -16,4 +16,14 @@ urlpatterns = patterns('',
 
     # Admin interface.
     url(r'^admin/', include(admin.site.urls)),
+
+    # Search urls.
+    url(
+        r'^search/?',
+        SearchView(
+            form_class = StyledSearchForm,
+            results_per_page = 20,
+        ),
+        name = 'haystack_search',
+    ),
 )
