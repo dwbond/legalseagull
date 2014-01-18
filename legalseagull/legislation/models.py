@@ -55,6 +55,12 @@ class Chapter( models.Model ):
                                     self.number,
                                     self.name)
 
+    def get_absolute_url(self):
+        return reverse(
+            'legislation.views.view_title',
+            args=[str(self.title.number)]
+        )
+
     class Meta:
         ordering = ['number']
 
@@ -86,6 +92,12 @@ class Section( models.Model ):
                                        self.chapter.number,
                                        self.number,
                                        self.name)
+
+    def get_absolute_url(self):
+        return reverse(
+            'legislation.views.view_title',
+            args=[str(self.chapter.title.number)]
+        )
 
     class Meta:
         ordering = ['number']
