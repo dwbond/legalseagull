@@ -5,3 +5,4 @@
 media
 legalseagull/static/admin
 legalseagull/legalseagull/secret.py
+legalseagull/legalseagull/whoosh_index
