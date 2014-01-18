@@ -20,46 +20,48 @@ Legal Seagull | Legislation
 <div class="row">
 
   <div class="col-lg-8">
-    <div class="well">
+    <div class="list-group">
 
-      <div class="row">
-        <div class="col-lg-8">
-          <h3>Title 1 - General Provisions</h3>
-        </div>
-      </div>
+      {% for title in titles %}
+      <a class="list-group-item titles" href="#analysis{{title.number}}">
+        <h4 class="list-group-item-heading">
+          Title {{title.number}}: {{title.name}}
+        </h4>
+        <p class="list-group-item-text">
+          {{title.long_name}}
+        </p>
+      </a>
+      {% empty %}
+      <a class="list-group-item" href="#">
+        <h4>
+          No US Titles Found
+        </h4>
+      </a>
+      {% endfor %}
 
-      <div class="row">
-        <div class="col-lg-8">
-          <h3>Title 2 - General Provisions</h3>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8">
-          <h3>Title 3 - General Provisions</h3>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8">
-          <h3>Title 4 - General Provisions</h3>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8">
-          <h3>Title 5 - General Provisions</h3>
-        </div>
-      </div>
     </div>
-
   </div>
 
   <div class="col-lg-4">
-    <div class="well">
+
+    {% for title in titles %}
+    <div class="panel panel-default collapse side-panel" id="analysis{{title.number}}">
+      <div class="panel-body">
+        <a href="{{title.get_absolute_url}}">More Information</a>
+      </div>
     </div>
+    {% endfor %}
+
   </div>
 
 </div>
+
+<script>
+$('a.titles').click( function() {
+  var target = $(this).attr('href');
+  $('div.side-panel').not(target).hide();
+  $(target).toggle();
+});
+</script>
 
 {% endblock %}
