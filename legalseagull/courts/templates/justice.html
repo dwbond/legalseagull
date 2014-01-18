@@ -18,7 +18,7 @@ Legal Seagull | Courts | {{ justice.name }}
 <div class="row">
   <div class="col-lg-8 well">
     <div class="row">
-      {% for opinion in justice.opinions %}
+      {% for opinion in justice.opinion_set.all %}
         {% for case in opinion.case_set.all %}
         <div class="col-lg-12 well">
         </div>
