@@ -45,7 +45,9 @@ class Opinion(Base):
     One of the opinions for the case
     """
 
-    writtenBy = models.ManyToManyField(Justice)
+    writtenBy = models.ManyToManyField(Justice, related_name="opinions")
+    opinion = models.TextField()
+    case = models.ForeignKey( 'Case' )
 
     @permalink
     def get_absolute_url(self):
@@ -56,10 +58,9 @@ class Case(Base):
     The Case
     """
 
-    decisionDate = models.DateField()
+    decisionDate = models.DateField(blank=False)
     # citationRank = models.IntegerField()
     tags = models.ManyToManyField(Tags)
-    opinions = models.ManyToManyField(Opinion)
 
     @permalink
     def get_absolute_url(self):
