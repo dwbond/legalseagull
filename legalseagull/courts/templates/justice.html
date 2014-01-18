@@ -21,6 +21,9 @@ Legal Seagull | Courts | {{ justice.name }}
       {% for opinion in justice.opinions %}
         {% for case in opinion.case_set.all %}
         <div class="col-lg-12 well">
+	  <h3>{{ case.name }}</h3>
+	  <p>{{ case.decisionDate }}</p>
+	  <p>{{ case.description }}</p>
         </div>
 	{% endfor %}
       {% endfor %}

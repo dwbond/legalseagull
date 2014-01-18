@@ -15,14 +15,14 @@ def justice(request, slug):
     justice = get_object_or_404(Justice, slug=slug)
     cases = Case.objects.all()#.orderby('-decisionDate')
     return render(request, 'justice.html', {
-        'justice' = justice,
+        'justice' : justice,
 
     },
     )
 
 def tags(request, slug):
     tag = get_object_or_404(Tags, slug=slug)
-    cases = Case.objects.all()#.order_by('-decisionDate')
+    cases = Case.objects.filter(tag)#.order_by('-decisionDate')
     return render(request,'tags.html', {
         'tag' : tag,
         'cases' : cases,

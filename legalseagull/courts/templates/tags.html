@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-Legal Seagull | Courts | Abortion
+Legal Seagull | Courts | {{ tag.name }}
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@ Legal Seagull | Courts | Abortion
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong>Abortion</strong></h1>
+      <h1><strong>{{ tag.name }}</strong></h1>
     </div>
   </div>
 </div>
@@ -17,11 +17,19 @@ Legal Seagull | Courts | Abortion
 <div class="row">
   <div class="col-lg-8 well">
     <div class="row">
+    {% if tag.name %}
+      {% for case in cases %}
       <div class="col-lg-12 well">
-	Important Case 1, earliest history
-      </div>
+        <h3 class="text-center">{{ case.name }}</h3>
+	<p> {{ case.decisionDate }} </p>
+	<p> {{ case.description }} </p>
+      <div>
+      {% empty %}
+          Oh no! There aren't any tags ;_;
+     {% endif %}
     </div>
   </div>
+
   <div class="col-lg-4">
     <div class="row">
       <div class="col-lg-12 well">
