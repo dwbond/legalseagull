@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-Legal Seagull | Courts | Brown v Board of Education | Majority
+Legal Seagull | Courts | {{ opinion.case.name }} | {{ opinion.name }}
 {% endblock %}
 
 {% block content %}
@@ -9,19 +9,25 @@ Legal Seagull | Courts | Brown v Board of Education | Majority
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong><em>Brown v Board of Education</em></strong></h1>
-      <p class="lead">Majority Opinion</p>
+      <h1><strong><em>{{ opinion.case.name }}</em></strong></h1>
+      <p class="lead"><strong>{{ opinion.name }}</strong></p>
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-lg-8">
-    Who was in the opinion
+    <h4 class="text-center">{{ opinion.writtenBy }}</a>
+    <p> {{ opinion.contents|linebreaks }} </p>
   </div>
 
   <div class="col-lg-4">
-    Something something something
+    <div>
+      Evernote
+    </div>
+    <div>
+      Similar Cases
+    </div>
   </div>
 </div>
 

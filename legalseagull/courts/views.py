@@ -3,6 +3,7 @@ from courts.models import Base, Tags, Justice, Opinion, Case
 import time
 
 def index(request):
+    # should this be pulled out? it's used by all of them
     cases = Case.objects.all()# .order_by('-decisionDate')
     # tags = Tags.objects.all()
     return render(request, 'courts.html', {
