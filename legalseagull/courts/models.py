@@ -21,6 +21,9 @@ class Tags(Base):
     def get_absolute_url(self):
         return ('case_tag', None, {'slug':self.slug})
 
+    class Meta:
+        verbose_name_plural = "Tags"
+
 class Justice(Base):
     """
     The Justice writing the case
