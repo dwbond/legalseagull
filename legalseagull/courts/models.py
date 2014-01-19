@@ -23,7 +23,6 @@ class Tags(Base):
     Tags for the case
     """
 
-    @permalink
     def get_absolute_url(self):
         return reverse(
             'courts.views.tags',
@@ -40,7 +39,6 @@ class Justice(Base):
 
     # information about the justice
 
-    @permalink
     def get_absolute_url(self):
         return reverse(
             'courts.views.justice',
@@ -59,7 +57,6 @@ class Opinion(Base):
     contents = models.TextField()
     case = models.ForeignKey( 'Case' )
 
-    @permalink
     def get_absolute_url(self):
         return reverse(
             'courts.views.opinion',
@@ -75,7 +72,6 @@ class Case(Base):
     # citationRank = models.IntegerField()
     tags = models.ManyToManyField(Tags)
 
-    @permalink
     def get_absolute_url(self):
         return reverse(
             'courts.views.case',

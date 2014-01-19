@@ -32,7 +32,7 @@ class Migration(SchemaMigration):
         # Adding model 'Opinion'
         db.create_table(u'courts_opinion', (
             (u'base_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['courts.Base'], unique=True, primary_key=True)),
-            ('opinion', self.gf('django.db.models.fields.TextField')()),
+            ('contents', self.gf('django.db.models.fields.TextField')()),
             ('case', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['courts.Case'])),
         ))
         db.send_create_signal(u'courts', ['Opinion'])
@@ -108,7 +108,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Opinion', '_ormbases': [u'courts.Base']},
             u'base_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['courts.Base']", 'unique': 'True', 'primary_key': 'True'}),
             'case': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['courts.Case']"}),
-            'opinion': ('django.db.models.fields.TextField', [], {}),
+            'contents': ('django.db.models.fields.TextField', [], {}),
             'writtenBy': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'opinions'", 'symmetrical': 'False', 'to': u"orm['courts.Justice']"})
         },
         u'courts.tags': {
