@@ -12,10 +12,8 @@
 
       <ul class="nav navbar-nav">
         <li><a href="{% url 'legalseagull.views.about' %}">About</a></li>
-        {% if user.is_authenticated %}
         <li><a href="{% url 'courts.views.index' %}">Court Cases</a></li>
         <li><a href="{% url 'legislation.views.index' %}">Legislation</a></li>
-        {% endif %}
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
