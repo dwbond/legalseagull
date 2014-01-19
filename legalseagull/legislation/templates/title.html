@@ -70,10 +70,13 @@ Legal Seagull | Title {{ title.number }}
           </a>
         </h4>
         <div class="list-group-item-text" id="evernote-tab">
+          <input type="text" name="evernote-title" id="evernote-title"
+          class="form-control" placeholder="Annotation Title" />
+          <br/>
           <textarea placeholder="Make annotation..." rows="5"
           class="form-control" id="evernote-textarea"></textarea>
           <br/>
-          <input type="submit" class="btn btn-primary btn-sm"
+          <input type="button" class="btn btn-primary btn-sm"
           value="Make Note" id="evernote-submit" />
         </div>
       </div>
@@ -91,5 +94,32 @@ Legal Seagull | Title {{ title.number }}
   </div>
 
 </div>
+
+<script>
+$.ajaxSetup({ 
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                     break;
+                 }
+             }
+         }
+         return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     } 
+});
+
+</script>
 
 {% endblock %}
