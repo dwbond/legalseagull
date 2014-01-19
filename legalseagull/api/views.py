@@ -16,13 +16,12 @@ def index(request):
     },
     )
 
-@login_required
 def evernote_create_note(request):
     if request.method != 'POST':
         return redirect('/api')
 
-    title = request.POST['title']
-    content = request.POST['content']
+    title = request.POST.get('title')
+    content = request.POST.get('content')
 
     note_store = get_note_store()
     response_data = {}
@@ -47,12 +46,11 @@ def evernote_create_note(request):
         content_type="application/json"
     )
 
-@login_required
 def evernote_create_notebook(request):
     if request.method != 'POST':
         return redirect('/api')
 
-    name = request.POST['title']
+    name = request.POST.get('notebook')
 
     note_store = get_note_store()
     response_data = {}
