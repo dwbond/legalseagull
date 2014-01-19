@@ -38,14 +38,15 @@ z-index: -1;
   }
 }
 
-.evernote {
-background-image: url('/static/imgs/evernote-logo.png');
-background-repeat: no-repeat;
-background-position: center center;
-min-height: 50px;
+.pointer {
+cursor:pointer;
 }
 
 #evernote-tab {
 margin-top: 10px;
+display: none;
+}
+
+#citation-container {
 display: none;
 }

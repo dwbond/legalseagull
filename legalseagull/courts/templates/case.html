@@ -28,7 +28,7 @@ Legal Seagull | Courts | {{ case.name }}
         </h3>
       </div>
       <div class="panel-body">
-        {{ case.description }}
+        {{ case.description|linebreaks }}
       </div>
       <div class="panel-footer">
         {% for tag in case.tags.all %}
@@ -41,13 +41,14 @@ Legal Seagull | Courts | {{ case.name }}
       {% for opinion in opinions %}
       <div class="list-group-item">
         <h4 class="list-group-item-heading">
-          {{ opinion.name }}
+          {{ opinion.name }} (Preview)
           <a href="{{ opinion.get_absolute_url }}">
             <span class="glyphicon glyphicon-new-window"></span>
           </a>
         </h4>
         <div class="list-group-item-text">
-          {{ opinion.contents|linebreaks }}
+          {{ opinion.contents|linebreaks|slice:":250" }}
+          <br/>
           Written by:
           {% for justice in opinion.writtenBy.all %}
           <a href="{{ justice.get_absolute_url }}">{{ justice.name }}</a>
@@ -65,36 +66,7 @@ Legal Seagull | Courts | {{ case.name }}
 
   </div>
 
-  <div class="col-lg-4">
-    <div class="list-group">
-
-      <div class="list-group-item">
-        <p class="list-group-item-text">
-          <img src="{% static "imgs/evernote-logo.png" %}" />
-          <strong>Evernote</strong>
-        </p>
-      </div>
-
-      <div class="list-group-item">
-        <h4 class="list-group-item-heading">
-          cross references
-        </h4>
-        <p class="list-group-item-text">
-          stuff goes here.
-        </p>
-      </div>
-
-      <div class="list-group-item">
-        <h4 class="list-group-item-heading">
-          Common Tags
-        </h4>
-        <p class="list-group-item-text">
-          tag1 tag2
-        </p>
-      </div>
-
-    </div>
-  </div>
+  {% include 'sidebar.html' %}
 
 </div>
 

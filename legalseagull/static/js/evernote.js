@@ -5,6 +5,10 @@ $(document).ready(function(){
     $("#evernote-tab").toggle(400);
   });
 
+  // Evernote triggers (always show, don't toggle).
+  $(".evernote-trigger").click(function(){
+    $("#evernote-tab").show(400);
+  });
 
 
   // Evernote submitter.
@@ -25,6 +29,7 @@ $(document).ready(function(){
       function( data ) {
         if( data.hasOwnProperty('result') ){
           if( data['result'] == 'success' ){
+            $("#citation-container").hide(400);
             // clear the textarea, but not the title
             $("#evernote-textarea").val('');
             // alert success

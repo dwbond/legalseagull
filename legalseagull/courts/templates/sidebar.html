@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<div class="col-lg-4">
+  <div class="list-group">
+
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading text-center">
+        Evernote
+      </h4>
+    </div>
+
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading">
+        cross references
+      </h4>
+      <p class="list-group-item-text">
+        stuff goes here.
+      </p>
+    </div>
+
+    <div class="list-group-item">
+      <h4 class="list-group-item-heading">
+        Common Tags
+      </h4>
+      <p class="list-group-item-text">
+        {% for tag in toptags %}
+        <a href="{{tag.get_absolute_url}}">{{ tag }}</a>
+        {% endfor %}
+      </p>
+    </div>
+
+  </div>
+</div>

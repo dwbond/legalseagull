@@ -23,7 +23,8 @@ Legal Seagull | Legislation
     <div class="list-group">
 
       {% for title in titles %}
-      <a class="list-group-item titles" href="#analysis{{title.number}}">
+      <a class="list-group-item titles" style="cursor:pointer;"
+      data-target="#analysis{{title.number}}">
         <h4 class="list-group-item-heading">
           Title {{title.number}}: {{title.name}}
           <span class="glyphicon glyphicon-arrow-right pull-right"></span>
@@ -79,7 +80,7 @@ Legal Seagull | Legislation
 
 <script>
 $('a.titles').click( function() {
-  var target = $(this).attr('href');
+  var target = $(this).attr('data-target');
   $('div.side-panel').not(target).hide();
   $(target).toggle();
   if( ! $(target).is(":visible") ) {
