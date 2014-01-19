@@ -1,7 +1,7 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-Legal Seagull | Courts | Brown v Board of Education
+Legal Seagull | Courts | {{ case.name }}
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,8 @@ Legal Seagull | Courts | Brown v Board of Education
 <div class="page-header" id="banner">
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong><em>Brown v Board of Education</em></strong></h1>
+      <h1><strong><em>{{ case.name }}</em></strong></h1>
+      <p class="lead">{{ case.decisionDate }}</p>
     </div>
   </div>
 </div>
@@ -17,8 +18,21 @@ Legal Seagull | Courts | Brown v Board of Education
 <div class="row">
   <div class="col-lg-8 well">
     <div class="row">
-      <div class="col-lg-12 well">
-      <!-- for opinions in case -->
+      <p>{{ case.decisionDate }}</p>
+      <p>{{ case.description }}</p>
+      <p>{% for tag in case.tags.all %}
+         <a href="{{ tag.get_absolute_url }}">{{ tag }}</a></p>
+      {% if opinions %}
+      {% for opinion in opinions %}
+        <div class="col-lg-12 well">
+	  <h3>{{ opinion.name }}</h3>
+	  <p><a href="#">{{ opinion.writtenBy }}</p></a>
+	  <p>{{ opinion.contents|linebreaks }}</p>
+        </div>
+      {% endfor %}
+      {% empty %}
+      Oh no. There's no opinions. T_T
+      {% endif %}
       </div>
     </div>
   </div>
