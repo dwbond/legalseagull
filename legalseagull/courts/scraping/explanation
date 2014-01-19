@@ -1,0 +1,32 @@
+SECOND "toccaption"
+<p class="toccaption">
+<b>Roe v. Wade (
+CASE - NAME
+
+FOURTH "toccaption"
+<b>Decided: January 22, 1973
+CASE - DECISIONDATE
+
+SECOND <b>Syllabus</b>
+CASE - DESCRIPTION
+until 
+
+{
+  <p class="castca">BLACKMUN, J.
+  JUSTICE -- NAME
+  OPINION -- WRITTENBY
+
+  Opinion of the Court
+  OPINION -- NAME
+  OPINION -- CASE (up)
+
+  skip
+  <p class="bodytext" MR. JUSTICE 
+
+  <p class="bodytext"> ...
+  OPINION -- CONTENTS
+
+  until <div class concurrence or <div class dissent
+}
+
+(then... new opinion, etc
