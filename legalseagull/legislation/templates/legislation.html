@@ -59,11 +59,16 @@ Legal Seagull | Legislation
     {% for title in titles %}
     <div class="list-group collapse side-panel" id="analysis{{title.number}}">
       <div class="list-group-item">
-        <h4 class="list-group-item-heading">Title {{title.number}}</h4>
-        <h6>{{title.name}}</h6>
-        <p class="list-group-item-text">
-          <a href="{{title.get_absolute_url}}">Details</a>
-        </p>
+        <h4 class="list-group-item-heading">
+          <a href="{{title.get_absolute_url}}">
+            Title {{title.number}}: {{title.name}}
+          </a>
+        </h4>
+        <span class="list-group-item-text">
+          {% for chapter in title.chapter_set.all %}
+            <h6>{{ chapter.name }}</h6>
+          {% endfor %}
+        </span>
       </div>
     </div>
     {% endfor %}
