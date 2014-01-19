@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     # App sub-urls.
     url(r'^legislation/', include('legislation.urls')),
     url(r'^courts/', include('courts.urls')),
+    url(r'^api/', include('api.urls')),
 
     # Admin interface.
     url(r'^admin/', include(admin.site.urls)),
