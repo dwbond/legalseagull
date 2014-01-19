@@ -22,7 +22,9 @@
         Common Tags
       </h4>
       <p class="list-group-item-text">
-        tag1 tag2
+        {% for tag in toptags %}
+        <a href="{{tag.get_absolute_url}}">{{ tag }}</a>
+        {% endfor %}
       </p>
     </div>
 
