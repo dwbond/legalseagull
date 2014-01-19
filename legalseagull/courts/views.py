@@ -13,10 +13,23 @@ def index(request):
 
 def justice(request, slug):
     justice = get_object_or_404(Justice, slug=slug)
-    cases = Case.objects.all().order_by('-decisionDate')
+    all_opinions = Opinion.objects.all()
+    opinions = []
+    for opinion in all_opinions:
+        authors = opinion.writtenBy.all()
+        if justice in authors:
+            opinions.append( opinion )
+    all_cases = Case.objects.all()
+    cases = []
+    for case in all_cases:
+        case_opinions = case.opinion_set.all()
+        for opinion in opinions:
+            if opinion in case_opinions:
+                cases.append( case )
     return render(request, 'justice.html', {
         'justice' : justice,
-
+        'opinions' : opinions,
+        'cases' : cases,
     },
     )
 

@@ -1,10 +1,12 @@
 {% extends 'layout/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 Legal Seagull | Courts | {{ case.name }}
 {% endblock %}
 
 {% block content %}
+
 
 <div class="page-header" id="banner">
   <div class="row">
@@ -16,38 +18,81 @@ Legal Seagull | Courts | {{ case.name }}
 </div>
 
 <div class="row">
-  <div class="col-lg-8 well">
-    <div class="row">
-      <p>{{ case.description }}</p>
-      <p>{% for tag in case.tags.all %}
-         <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
-	 {% endfor %}</p>
+
+  <div class="col-lg-8">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Case Description
+        </h3>
+      </div>
+      <div class="panel-body">
+        {{ case.description }}
+      </div>
+      <div class="panel-footer">
+        {% for tag in case.tags.all %}
+        <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="list-group">
       {% for opinion in opinions %}
-        <div class="col-lg-12">
-	  <h3>{{ opinion.name }}</h3>
-          <strong>Where did the justices go to?</strong>
-	    <p>{% for justice in opinions.writtenBy.all %}
-	       <a href="{{ justice.get_absolute_url }}">{{ justice.name }}</a>
-               {% endfor %}
-	    <p>{{ opinion.contents|linebreaks }}</p>
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          {{ opinion.name }}
+          <a href="{{ opinion.get_absolute_url }}">
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+        </h4>
+        <div class="list-group-item-text">
+          {{ opinion.contents|linebreaks }}
+          Written by:
+          {% for justice in opinion.writtenBy.all %}
+          <a href="{{ justice.get_absolute_url }}">{{ justice.name }}</a>
+          {% endfor %}
         </div>
+      </div>
       {% empty %}
-      Oh no. There's no opinions. T_T
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>No opinions written.</h4>
+        </div>
+      </div>
       {% endfor %}
     </div>
+
   </div>
 
   <div class="col-lg-4">
-    <div class="row">
-      <div class="col-lg-12 well">
-        <strong>Evernote</strong>
+    <div class="list-group">
+
+      <div class="list-group-item">
+        <p class="list-group-item-text">
+          <img src="{% static "imgs/evernote-logo.png" %}" />
+          <strong>Evernote</strong>
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        <strong>Generate Citations</strong>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          cross references
+        </h4>
+        <p class="list-group-item-text">
+          stuff goes here.
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        <strong>Cross References</strong>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Common Tags
+        </h4>
+        <p class="list-group-item-text">
+          tag1 tag2
+        </p>
       </div>
+
     </div>
   </div>
 

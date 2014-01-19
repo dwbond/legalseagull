@@ -11,11 +11,42 @@ $(document).ready(function(){
     var annotation = $("#evernote-textarea").val();
     console.log( annotation );
 
-    var client = new Evernote.Client({token: 'S=s1:U=8dbad:E=14afebcbfc4:C=143a70b93c7:P=1cd:A=en-devtoken:V=2:H=3d264cfb27f8fe7deb504b6e05229d5d'});
-    var noteStore = client.getNoteStore();
-    notebooks = noteStore.listNotebooks(function(err, notebooks){
-      console.log( notebooks );
-    });
+    var noteStoreURL = "https://sandbox.evernote.com/michel585/shard/s1/notestore";
+    var authenticationToken = "S=s1:U=8dbad:E=14afebcbfc4:C=143a70b93c7:P=1cd:A=en-devtoken:V=2:H=3d264cfb27f8fe7deb504b6e05229d5d";
+
+    var noteStoreTransport = new Thrift.BinaryHttpTransport(noteStoreURL);
+    var noteStoreProtocol = new Thrift.BinaryProtocol(noteStoreTransport);
+    var noteStore = new NoteStoreClient(noteStoreProtocol);
+
+    noteStore.listNotebooks(
+      authenticationToken,
+      function (notebooks) {
+        console.log("success");
+        console.log(notebooks);
+      },
+      function onerror(error) { 
+        console.log("failure");
+        console.log(error);
+      }
+    );
+
+    var timestamp = $.now();
+    var new_note = new Note();
+    new_note.title = "LegalSeagull annotation " + timestamp;
+    new_note.content = annotation;
+
+    noteStore.createNote(
+      authenticationToken,
+      new_note,
+      function( note ) {
+        console.log(note);
+      },
+      function onerror(error) {
+        console.log(error);
+      }
+    );
+
+
 
     // clear the textarea
     $("#evernote-textarea").val('');

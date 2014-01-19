@@ -1,10 +1,12 @@
 {% extends 'layout/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 Legal Seagull | Courts | {{ justice.name }}
 {% endblock %}
 
 {% block content %}
+
 
 <div class="page-header" id="banner">
   <div class="row">
@@ -17,28 +19,59 @@ Legal Seagull | Courts | {{ justice.name }}
 
 <div class="row">
 
-  <div class="col-lg-8 well">
-    <div class="row">
-      {% for opinion in justice.opinion_set.all %}
-        {% for case in opinion.case_set.all %}
-        <div class="col-lg-12">
-	  <h3>{{ case.name }}</h3>
-	  <p>{{ case.decisionDate }}</p>
-	  <p>{{ case.description }}</p>
-        </div>
-	{% endfor %}
+  <div class="col-lg-8">
+    <div class="list-group">
+
+      {% for case in cases %}
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          {{ case.name }}
+          <a href="{{case.get_absolute_url}}">
+            <span class="glyphicon glyphicon-new-window"></span>
+          </a>
+        </h4>
+        <p class="list-group-item-text">
+          <p>{{ case.decisionDate }}</p>
+          <p>{{ case.description }}</p>
+        </p>
+      </div>
+      {% empty %}
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">No opinions authored.</h4>
+      </div>
       {% endfor %}
+
     </div>
   </div>
 
   <div class="col-lg-4">
-    <div class="row">
-      <div class="col-lg-12 well">
-        Reserved for Evernote
+    <div class="list-group">
+
+      <div class="list-group-item">
+        <p class="list-group-item-text">
+          <img src="{% static "imgs/evernote-logo.png" %}" />
+          <strong>Evernote</strong>
+        </p>
       </div>
-      <div class="col-lg-12 well">
-        Information and visualization and such
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          cross references
+        </h4>
+        <p class="list-group-item-text">
+          stuff goes here.
+        </p>
       </div>
+
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">
+          Common Tags
+        </h4>
+        <p class="list-group-item-text">
+          tag1 tag2
+        </p>
+      </div>
+
     </div>
   </div>
 
