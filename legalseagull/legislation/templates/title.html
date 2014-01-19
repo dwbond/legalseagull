@@ -31,16 +31,18 @@ Legal Seagull | Title {{ title.number }}
           Ch {{chapter.number}}: {{chapter.name}}
         </h3>
       </div>
-      <div class="panel-body evernote-trigger">
+      <div class="panel-body">
 
         {% for section in chapter.section_set.all %}
         <h5>
           &sect;{{section.number}}: {{section.name}}
           <span class="pull-right">
-            <a href="#">Generate Citation</a>
+            <a data-target="{{section}}" class="citation-generator pointer">
+              Generate Citation
+            </a>
           </span>
         </h5>
-        <p>
+        <p class="evernote-trigger">
           {{ section.text }}
         </p>
         {% empty %}
@@ -65,8 +67,8 @@ Legal Seagull | Title {{ title.number }}
       <div class="list-group-item">
         <h4 class="list-group-item-heading">
           Evernote
-          <a href="#" class="evernote-expander">
-            <span class="glyphicon glyphicon-download pull-right"></span>
+          <a class="evernote-expander pointer">
+            <span class="glyphicon glyphicon-asterisk pull-right"></span>
           </a>
         </h4>
         <div class="list-group-item-text" id="evernote-tab">
@@ -87,6 +89,14 @@ Legal Seagull | Title {{ title.number }}
         </h4>
         <p class="list-group-item-text">
           stuff
+        </p>
+      </div>
+
+      <div class="list-group-item" id="citation-container">
+        <h4 class="list-group-item-heading">
+          Citation
+        </h4>
+        <p class="list-group-item-text" id="citation">
         </p>
       </div>
 
