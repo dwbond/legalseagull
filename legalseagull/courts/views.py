@@ -4,7 +4,7 @@ from django.db.models import Count
 import time
 
 def popular_tags():
-    return Tags.objects.annotate(num_cases=Count('case')).order_by('num_cases')
+    return Tags.objects.annotate(num_cases=Count('case')).order_by('num_cases')[:4]
 
 def index(request):
     # should this be pulled out? it's used by all of them
