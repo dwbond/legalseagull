@@ -38,7 +38,7 @@ def opinion(request, slug):
 
 def case(request, slug):
     case = get_object_or_404(Case, slug=slug)
-    opinions = Opinion.objects.filter(case)
+    opinions = Opinion.objects.filter(case=case)
     return render(request, 'case.html', {
         'case' : case,
         'opinions' : opinions,
