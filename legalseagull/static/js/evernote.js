@@ -5,6 +5,10 @@ $(document).ready(function(){
     $("#evernote-tab").toggle(400);
   });
 
+  // Evernote triggers (always show, don't toggle).
+  $(".evernote-trigger").click(function(){
+    $("#evernote-tab").show(400);
+  });
 
 
   // Evernote submitter.
