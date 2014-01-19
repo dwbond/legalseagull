@@ -31,7 +31,7 @@ Legal Seagull | Courts | {{ justice.name }}
         </h4>
         <p class="list-group-item-text">
           <p>{{ case.decisionDate }}</p>
-          <p>{{ case.description }}</p>
+          <p>{{ case.description|linebreaks }}</p>
         </p>
       </div>
       {% empty %}

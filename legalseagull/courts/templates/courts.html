@@ -31,7 +31,7 @@ Legal Seagull | Court Cases
           </a>
         </h4>
         <p class="list-group-item-text">
-          {{ case.description }}
+          {{ case.description|linebreaks }}
           <br/>
           {% for tag in case.tags.all %}
           <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
