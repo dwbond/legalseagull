@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'legislation',
     'courts',
+    'api',
     'south',
     'haystack',
     'django_gravatar',
