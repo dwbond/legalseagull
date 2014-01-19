@@ -51,7 +51,10 @@ class Opinion(Base):
     """
     One of the opinions for the case
     """
-
+    
+    # Not fixing this now, but this model doesn't recognize that there is
+    # a justice that actually writes the opinion, and then the people that
+    # sign on along
     writtenBy = models.ManyToManyField(Justice, related_name="opinions")
     contents = models.TextField()
     case = models.ForeignKey( 'Case' )
