@@ -29,7 +29,7 @@ $(document).ready(function(){
       function( data ) {
         if( data.hasOwnProperty('result') ){
           if( data['result'] == 'success' ){
-    p$("#citation-container").hide(400);
+            $("#citation-container").hide(400);
             // clear the textarea, but not the title
             $("#evernote-textarea").val('');
             // alert success
