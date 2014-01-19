@@ -47,7 +47,7 @@ Legal Seagull | Courts | {{ case.name }}
           </a>
         </h4>
         <div class="list-group-item-text">
-          {{ opinion.contents|linebreaks }}
+          {{ opinion.contents|linebreaks|slice:":250" }}
           Written by:
           {% for justice in opinion.writtenBy.all %}
           <a href="{{ justice.get_absolute_url }}">{{ justice.name }}</a>
