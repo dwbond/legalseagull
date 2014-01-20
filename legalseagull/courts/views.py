@@ -2,9 +2,20 @@ from django.shortcuts import render, get_object_or_404
 from courts.models import Base, Tags, Justice, Opinion, Case
 from django.db.models import Count
 import time
+import wikipedia
 
 def popular_tags():
     return Tags.objects.annotate(num_cases=Count('case')).order_by('num_cases')[:4]
+
+# this should probably be written to the database instead of generated
+# on the fly on the page
+def wikipedia(justiceName):
+    try:
+        summary = wikipedia.summary(justiceName)
+	return summary
+
+    except DisambiguationError, e:
+        return ""
 
 def index(request):
     # should this be pulled out? it's used by all of them
@@ -31,11 +42,13 @@ def justice(request, slug):
         for opinion in opinions:
             if opinion in case_opinions:
                 cases.append( case )
+    summary = wikipedia(justice.name)
     return render(request, 'justice.html', {
         'justice' : justice,
         'opinions' : opinions,
         'cases' : cases,
         'toptags' : popular_tags(),
+	'summary' : summary,
     },
     )
 
