@@ -13,16 +13,16 @@ Open a terminal window and type in the following commands. (If you're on Windows
 use [Cygwin](http://cygwin.com/). This will create a local, workable copy of the
 project.
 
-``bash``
-``git clone git@git.gmu.edu:dbond2/legalseagull.git``
-``cd legalseagull``
-``mkdir ~/.virtualenvs``
-``virtualenv ~/.virtualenvs/legalseagull``
-``source ~/.virtualenvs/legalseagull/bin/activate``
-``pip install -r requirements.txt``
+    bash
+    git clone git@git.gmu.edu:dbond2/legalseagull.git
+    cd legalseagull
+    mkdir ~/.virtualenvs
+    virtualenv ~/.virtualenvs/legalseagull
+    source ~/.virtualenvs/legalseagull/bin/activate
+    pip install -r requirements.txt
 
 database
 
-``cd legalseagull``
-``python manage.py runserver``
+    cd legalseagull
+    python manage.py runserver
 
